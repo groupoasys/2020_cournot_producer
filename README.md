@@ -14,7 +14,7 @@ hour: series with value equal to the hour of the day.
 
 Raw data source: [OMIE] 
 
-A linear inverse demand function of the form price = alpha - beta * energy_production is assumed. For each hour a different linear model is fit.
+In the case study we assume a Cournot producer whose production influence the price she obtains. A linear inverse demand function of the form price = alpha - beta * energy_production is assumed. The parameter of this model are considered unknown prior to the market bid. For each hour of the training dataset a different linear model is fit to obtain the corresponding parameters for that hour.
 
 alpha: constant term of the linear model (euros).
 
@@ -74,5 +74,5 @@ Please, see the LICENSE file.
     
 [paper]: https://arxiv.org/abs/2008.01500
 [manuscript]: https://arxiv.org/abs/2008.01500
-[Energinet]: https://www.omie.es/
+[OMIE]: https://www.omie.es/
 [ENTSO-e Transparency Platform]: https://transparency.entsoe.eu/

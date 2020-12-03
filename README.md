@@ -1,46 +1,35 @@
 # 2020_cournot_producer
-Power systems data (2018-2019) from ENTSO-e and OMIE (Spain) used in the numerical case study of the [paper] published on IEEE Transactions on Power Systems. The data includes wind and solar power production forecasts of Spain (ES bidding zone) and inverse demand function data obtained from spanish marked data of OMIE.
+Power systems data (2018-2019) from ENTSO-e and OMIE (Spain) used in the numerical case study of the [manuscript] currently under review. The dataset includes wind and solar power production forecasts of Spain (ES european bidding zone) and inverse demand function parameters computed from real data of the spanish day ahead market OMIE. The parameters alpha and beta are computed assuming a linear invese demand function. More details in the [manuscript].
 
 ## Dataset Content 
-This section describes in detail the data series of the only data file in the repository: dataset_wind_europe_2015_2019.csv
+This section describes in more detail the data series of the only data file in the repository: dataset_spain_2018_2019.csv
 
 ### Time
 
-TimeUTC: UTC time
+timestamp: UTC timestamp.
 
-hour of day (hourXX): dummy variable equal 1 when TimeUTC.hour == hourXX (24 series).
+hour: series with value equal to the hour of the day.
 
-### Data from OMIE
+### Processed series from OMIE data
 
-Data source: [OMIE] 
+Raw data source: [OMIE] 
 
-alpha: (euros).
+A linear inverse demand function of the form price = alpha - beta * energy_production is assumed. For each hour a different linear model is fit.
 
-beta: (euros).
+alpha: constant term of the linear model (euros).
 
-### Data from Entsoe
+beta: slope of the intverse demand function (euros / MWh).
+
+### Forecasts from ENTSO-e
 
 Data source: [ENTSO-e Transparency Platform]
 
-Warning! The day ahead data may not follow the Manual of Procedure of the Transparency Platform and may be uploaded after the 18.00 Brussels time deadline of day D-1. The data is sometimes updated afterwards, even months later.
+The forecasts below are issued before 18.00 Brussels time day D-1 according to the Manual of Procedure of the [ENTSO-e Transparency Platform].
 
-XX_won_real: (MWh) actual onshore wind production of bidding zone XX. 
+wind_on_dahead_utc: (MWh) On shore wind production forecast for the european bidding zone ES. 
 
-XX_won_da: (MWh) day ahead (before 18.00 Brussels time day D-1) onshore wind production of bidding zone XX. 
+solar_dahead_utc: (MWh) Solar production forecast for the european bidding zone ES.
 
-XX_woff_real: (MWh) actual offshore wind production of bidding zone XX.
-
-XX_woff_da: (MWh) day ahead (before 18.00 Brussels time day D-1) offshore wind production of bidding zone XX.
-
-DK1_SchedGen: (MWh) Scheduled generation for DK1. 
-
-DK1_SolarDahead: (MWh) Solar production forecasted for DK1. (before 18.00 Brussels time day D-1)
-
-DK1_TotalLoadDahead: (MWh) Total Load forecasted for DK1. (before 18.00 Brussels time day D-1)
-
-### Other data
-
-DK1_FM3_output: (MWh) Output of the first step optimization problem tailored to forecasting as described in the [paper].
 
 ## Useful related websites
 
@@ -49,17 +38,23 @@ DK1_FM3_output: (MWh) Output of the first step optimization problem tailored to 
 [ENTSO-e Transparency Platform]
 
 
-
 ## How to cite the paper?
 
 If you want to cite this [paper] you can use the following text:
 ```
-Pending.
+M.A. Muñoz, S. Pineda, J.M. Morales, "A bilevel framework for decision-making under uncertainty with contextual information," arXiv preprint arXiv:2008.01500, 2020.
 ```
 or the .bib version:
 
 ```
-Pending
+@misc{Munoz2020bilevel,
+      title={A bilevel framework for decision-making under uncertainty with contextual information}, 
+      author={M.A. Mu\~noz and S. Pineda and J.M. Morales},
+      year={2020},
+      eprint={2008.01500},
+      archivePrefix={arXiv},
+      primaryClass={math.OC}
+}
 ```
 
 ## Developed by 
@@ -77,6 +72,7 @@ Any feedback is welcome so feel free to ask or comment anything you want via a P
  
 Please, see the LICENSE file.
     
-[paper]: Pending
+[paper]: https://arxiv.org/abs/2008.01500
+[manuscript]: https://arxiv.org/abs/2008.01500
 [Energinet]: https://www.omie.es/
 [ENTSO-e Transparency Platform]: https://transparency.entsoe.eu/
